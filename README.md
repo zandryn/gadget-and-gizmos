@@ -18,10 +18,10 @@ it hurts my wallet, but heals my soul.
 - **styling:** idk yet 
 
 ## documentation
-- [planning & requirements](docs/PLANNING.md)
-- [design decisions](docs/DESIGN.md)
-- [API documentation](docs/API.md)
-- [setup instructions](docs/SETUP.md)
+- [planning & requirements](1 docs/PLANNING.md)
+- [design decisions](1 docs/DESIGN.md)
+- [API documentation](1 docs/API.md)
+- [setup instructions](1 docs/SETUP.md)
 
 ## progress
-my [learning journal](notes/learning-journal.md) mainly to journal my trials and errors.  
+my [learning journal](4 notes/learning-journal.md) mainly to journal my trials and errors.  
