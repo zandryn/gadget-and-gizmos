@@ -14,9 +14,9 @@ from database import ping_mongoDB
 async def main():
     connected = await ping_mongoDB()
     if connected:
-        print("🎉 We're connected to MongoDB!")
+        print("successfully connected to mongodb!")
     else:
-        print("😔 Connection failed - check your .env file")
+        print("connection failed - check your .env file")
 
 if __name__ == "__main__":
     asyncio.run(main())
