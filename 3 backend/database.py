@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo.server_api import ServerApi
+import certifi  # Add this import
 
 load_dotenv('mongo.env')
 
@@ -12,11 +13,15 @@ uri = os.getenv("MONGODB_URL")
 if not uri:
     raise ValueError("MONGODB_URL environment variable not set.")
 
-# create a new client & connect to the server
-client = AsyncIOMotorClient(uri, server_api=ServerApi('1'))
+# Add tlsCAFile=certifi.where() to fix SSL issue
+client = AsyncIOMotorClient(
+    uri,
+    server_api=ServerApi('1'),
+    tlsCAFile=certifi.where()  # This fixes the certificate issue
+)
 
 db = client['gadgets-db']
-device_collection = db['devices'] # object for main.py
+device_collection = db['devices']
 
 async def ping_mongoDB():
     """DEBUGGING"""
@@ -27,4 +32,3 @@ async def ping_mongoDB():
     except Exception as e:
         print(f"MongoDB connection failed: {e}")
         return False
-

@@ -17,10 +17,10 @@ try:
     # client is automatically configured using environment variables (e.g., google_application_credentials)
     storage_client = storage.Client()
     # replace 'your-gcs-bucket-name' with your actual bucket name
-    bucket_name = os.getenv("gcs_bucket_name")
-    if not bucket_name:
+    bucket = os.getenv("epraudite-gadgets-gizmos")
+    if not bucket:
         raise ValueError("gcs_bucket_name environment variable not set.")
-    bucket = storage_client.bucket(bucket_name)
+    bucket = storage_client.bucket(bucket)
 except Exception as e:
     print(f"error initializing google cloud storage: {e}")
     pass
@@ -34,7 +34,7 @@ app.mount("/static", StaticFiles(directory=upload_directory), name="static")
 
 # configure cors middleware
 app.add_middleware(
-    corsmiddleware,
+    CORSMiddleware,
     allow_origins=["*"], # allows all origins
     allow_methods=["*"], # allows all methods (get, post, put, delete, etc.)
     allow_headers=["*"], # allows all headers
