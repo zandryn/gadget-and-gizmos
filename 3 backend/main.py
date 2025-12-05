@@ -16,11 +16,10 @@ load_dotenv()
 try:
     # client is automatically configured using environment variables (e.g., google_application_credentials)
     storage_client = storage.Client()
-    # replace 'your-gcs-bucket-name' with your actual bucket name
-    bucket = os.getenv("epraudite-gadgets-gizmos")
-    if not bucket:
+    bucket_name = os.getenv("GCS_BUCKET_NAME")
+    if not bucket_name:
         raise ValueError("gcs_bucket_name environment variable not set.")
-    bucket = storage_client.bucket(bucket)
+    bucket = storage_client.bucket(bucket_name)
 except Exception as e:
     print(f"error initializing google cloud storage: {e}")
     pass
